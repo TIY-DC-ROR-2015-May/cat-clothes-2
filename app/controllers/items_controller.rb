@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @items = Item.page(params[:page])
@@ -19,5 +19,13 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @item = Item.find params[:id]
+  end
+
+  def edit
+    @item = current_user.sold_items.find params[:id]
   end
 end

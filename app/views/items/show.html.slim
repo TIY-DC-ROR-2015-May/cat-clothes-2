@@ -1,0 +1,11 @@
+- if @item.seller == current_user
+  = link_to "Edit item", edit_item_path, class: "btn btn-default"
+
+h1
+  = @item.name
+  |  
+  small by #{@item.seller.email}
+h2
+  = @item.available
+  | for sale @
+  = @item.price
