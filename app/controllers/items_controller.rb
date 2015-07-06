@@ -11,8 +11,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    create_params = params.require(:item).permit(:name, :price)
-    @item = current_user.sold_items.new(create_params)
+    @item = current_user.sold_items.new(item_params)
     if @item.save
       # redirect_to item_path(item)
       redirect_to @item, notice: "Item created"
@@ -27,5 +26,22 @@ class ItemsController < ApplicationController
 
   def edit
     @item = current_user.sold_items.find params[:id]
+  end
+
+  def update
+    # NOT Item.find
+    @item = current_user.sold_items.find params[:id]
+    if @item.update(item_params)
+      redirect_to @item, notice: "Item updated"
+    else
+      flash[:warning] = "Failed to update item"
+      render :edit
+    end
+  end
+
+private
+
+  def item_params
+    params.require(:item).permit(:name, :price)
   end
 end
