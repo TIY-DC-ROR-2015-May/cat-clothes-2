@@ -1,0 +1,18 @@
+h1 Items
+
+p There are #{@items.count} items
+
+table
+  thead
+    tr
+      th Name
+      th Price
+      th Seller
+  tbody
+    - @items.each do |item|
+      tr
+        td= item.name
+        td= item.price
+        td= item.seller.email
+
+= link_to "New item", new_item_path
