@@ -1,5 +1,24 @@
 <h1>This is the Item index</h1>
 
-<p>There are <%= Item.count %> items</p>
+<p>There are <%= @items.count %> items</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Seller</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.price %></td>
+        <td><%= item.seller.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to "Sell an Item", new_item_path %>

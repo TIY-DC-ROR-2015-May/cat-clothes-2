@@ -20,10 +20,13 @@ end
 gem 'quiet_assets'
 gem 'pry-rails'
 
+gem 'slim-rails'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'did_you_mean'
+  gem 'faker'
   gem 'sqlite3'
 end
 
