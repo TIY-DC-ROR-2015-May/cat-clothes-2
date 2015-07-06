@@ -4,4 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:github]
+
+  has_many :orders
+
+  has_many :sold_items, class_name: "Item", foreign_key: :seller_id
 end
