@@ -26,6 +26,7 @@ gem 'twitter-bootstrap-rails'
 gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
 
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 group :development do
   gem 'better_errors'
