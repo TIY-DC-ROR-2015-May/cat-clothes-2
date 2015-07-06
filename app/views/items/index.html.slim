@@ -1,6 +1,8 @@
 h1 Items
 
-p There are #{@items.count} items
+p There are #{@items.total_count} items
+
+= link_to "Next page", "/?page=#{@items.next_page}"
 
 table.table.table-striped.table-hover
   thead
