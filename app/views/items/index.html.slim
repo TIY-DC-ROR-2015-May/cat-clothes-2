@@ -11,7 +11,7 @@ table.table.table-striped.table-hover
   tbody
     - @items.each do |item|
       tr
-        td= item.name
+        td= link_to item.name, item
         td= item.price
         td= item.seller.email
 

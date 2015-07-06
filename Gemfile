@@ -25,6 +25,8 @@ gem 'slim-rails'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
 
+gem 'kaminari'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
