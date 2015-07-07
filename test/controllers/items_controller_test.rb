@@ -60,7 +60,8 @@ class ItemsControllerTest < ActionController::TestCase
 
   def test_users_cannot_delete_other_items
     u = login
-    i = Item.first
+    i = Item.create! name: "Arg", price: 1,
+      seller: User.where.not(id: u.id).first!
 
     refute_equal i.seller, u
 
