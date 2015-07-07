@@ -8,4 +8,9 @@ class UserTest < ActiveSupport::TestCase
     u.sold_items << Item.first
     assert_equal 1, u.sold_items.count
   end
+
+  def test_can_reverse_email
+    u = User.new email: "james@theironyard.com"
+    assert_equal u.name, "James"
+  end
 end
