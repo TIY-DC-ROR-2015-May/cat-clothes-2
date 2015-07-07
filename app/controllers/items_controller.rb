@@ -39,6 +39,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    i = current_user.sold_items.find params[:id]
+    i.destroy
+    redirect_to items_path, notice: "Item deleted"
+  end
+
 private
 
   def item_params

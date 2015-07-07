@@ -16,6 +16,7 @@ class ActionController::TestCase
   end
 
   def login user=nil
+    # user = user || User.first
     user ||= User.first
     sign_in user
     user
