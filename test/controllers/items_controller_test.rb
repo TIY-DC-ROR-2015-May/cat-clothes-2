@@ -1,11 +1,6 @@
 require 'test_helper'
 
 class ItemsControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
-
-  def setup
-    @request.env["devise.mapping"] = Devise.mappings[:user]
-  end
 
   def test_new_requires_sign_in
     get :new
@@ -15,7 +10,7 @@ class ItemsControllerTest < ActionController::TestCase
   end
 
   def test_can_see_new_form
-    sign_in User.first
+    login
     get :new
     assert_equal "200", response.code
     # Really want: has a form that when clicked creates an item
@@ -24,8 +19,7 @@ class ItemsControllerTest < ActionController::TestCase
   end
 
   def test_can_create_items
-    u = User.first
-    sign_in u
+    u = login
 
     post :create, item: { name: "Thing", price: 10 }
 
@@ -37,8 +31,7 @@ class ItemsControllerTest < ActionController::TestCase
   end
 
   def test_create_validates_params
-    u = User.first
-    sign_in u
+    u = login
 
     existing = Item.count
     post :create, item: { price: 10 }
