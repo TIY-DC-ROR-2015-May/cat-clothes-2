@@ -35,4 +35,17 @@ class ItemsControllerTest < ActionController::TestCase
     assert_equal "302", response.code
     assert_includes response.redirect_url, item_path(item)
   end
+
+  def test_create_validates_params
+    u = User.first
+    sign_in u
+
+    existing = Item.count
+    post :create, item: { price: 10 }
+
+    assert_equal existing, Item.count
+
+    assert_equal "200", response.code
+    assert_includes response.body, "error"
+  end
 end
