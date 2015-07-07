@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
+  before_action :set_item, only: [:edit, :update, :destroy]
+
   def index
     @items = Item.page(params[:page])
   end
@@ -25,12 +27,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = current_user.sold_items.find params[:id]
   end
 
   def update
     # NOT Item.find
-    @item = current_user.sold_items.find params[:id]
     if @item.update(item_params)
       redirect_to @item, notice: "Item updated"
     else
@@ -40,8 +40,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    i = current_user.sold_items.find params[:id]
-    i.destroy
+    @item.destroy
     redirect_to items_path, notice: "Item deleted"
   end
 
@@ -49,5 +48,9 @@ private
 
   def item_params
     params.require(:item).permit(:name, :price)
+  end
+
+  def set_item
+    @item = current_user.sold_items.find params[:id]
   end
 end
