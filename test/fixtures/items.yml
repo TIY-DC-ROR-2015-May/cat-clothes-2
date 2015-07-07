@@ -4,8 +4,10 @@ one:
   name: MyString
   price: 9.99
   available: 1
+  seller: su
 
 two:
   name: MyString
   price: 9.99
   available: 1
+  seller: su

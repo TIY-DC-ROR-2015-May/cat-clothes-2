@@ -36,6 +36,11 @@ group :development do
   gem 'sqlite3'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'launchy'
+end
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'

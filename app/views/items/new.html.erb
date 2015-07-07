@@ -1,5 +1,5 @@
-<%= form_for @item do |f| %>
-  <%= f.text_field :name, placeholder: "Name" %>
-  <%= f.number_field :price, placeholder: "Price" %>
+<%= bootstrap_form_for @item do |f| %>
+  <%= f.text_field :name %>
+  <%= f.number_field :price %>
   <button>Save</button>
 <% end %>
