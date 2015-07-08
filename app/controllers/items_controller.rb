@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new seller_id: current_user.id
+    authorize! :create, @item
     #@item = current_user.items.new
   end
 
@@ -30,7 +31,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    # NOT Item.find
+    authorize! :update, @item
     if @item.update(item_params)
       redirect_to @item, notice: "Item updated"
     else
@@ -40,6 +41,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @item
     @item.destroy
     redirect_to items_path, notice: "Item deleted"
   end
@@ -51,6 +53,6 @@ private
   end
 
   def set_item
-    @item = current_user.sold_items.find params[:id]
+    @item = Item.find params[:id]
   end
 end

@@ -1,3 +1,5 @@
+= link_to "New Item", new_item_path, class: "btn btn-default"
+
 h1 Items
 
 p There are #{@items.total_count} items
@@ -16,5 +18,3 @@ table.table.table-striped.table-hover
         td= link_to item.name, item
         td= item.price
         td= item.seller.email
-
-= link_to "New item", new_item_path
