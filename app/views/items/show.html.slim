@@ -12,3 +12,7 @@ h2
   = @item.available
   | for sale @
   = @item.price
+
+= form_tag cart_path, method: :patch
+  input type="hidden" name="item_id" value=@item.id
+  button.btn.btn-primary Add to Cart
