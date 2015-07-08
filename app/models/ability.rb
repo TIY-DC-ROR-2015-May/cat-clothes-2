@@ -17,5 +17,7 @@ class Ability
     if user.destructive?
       can :destroy, :all
     end
+
+    can :update, Cart
   end
 end

@@ -33,7 +33,7 @@ html lang="en"
             ul.nav.navbar-nav.pull-right
               - if current_user
                 li= link_to current_user.email, ""
-                li= link_to "Check Out (?)", "?"
+                li= link_to "Check Out (#{cart.count})", "?"
                 li= link_to "Sign Out", destroy_user_session_path, method: :delete
               - else
                 li= link_to "Sign In", new_user_session_path
