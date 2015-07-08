@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  purchaser_id: 
+  total_cost: 9.99
+  paid_at: 2015-07-08 11:24:53
+
+two:
+  purchaser_id: 
+  total_cost: 9.99
+  paid_at: 2015-07-08 11:24:53
