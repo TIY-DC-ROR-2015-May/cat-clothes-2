@@ -10,5 +10,12 @@ class Ability
       can :create, Item
     end
     can [:update, :destroy], Item, seller_id: user.id
+
+    # if user.superuser?
+    #   can :manage, :all
+    # end
+    if user.destructive?
+      can :destroy, :all
+    end
   end
 end

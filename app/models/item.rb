@@ -4,5 +4,5 @@ class Item < ActiveRecord::Base
 
   validates_presence_of :name, :price, :seller
 
-  paginates_per 10
+  paginates_per 20
 end
