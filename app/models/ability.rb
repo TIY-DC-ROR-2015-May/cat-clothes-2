@@ -1,8 +1,8 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
-    user ||= User.new
+  def initialize(user=nil)
+    user ||= User.new(created_at: Time.now)
 
     can :read, Item
 

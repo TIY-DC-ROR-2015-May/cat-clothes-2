@@ -21,7 +21,7 @@ class AbilityTest < ActiveSupport::TestCase
     sellers_abilities = Ability.new item.seller
     assert sellers_abilities.can? :update, item
 
-    ability = Ability.new User.new
+    ability = Ability.new
     refute ability.can? :update, item
   end
 end

@@ -5,6 +5,7 @@ class ItemsControllerTest < ActionController::TestCase
   def test_new_requires_sign_in
     get :new
     # /users/sign_in
+
     assert_equal "302", response.code
     assert_includes response.redirect_url, new_user_session_path
   end
@@ -65,12 +66,10 @@ class ItemsControllerTest < ActionController::TestCase
 
     refute_equal i.seller, u
 
-    assert_raises ActiveRecord::RecordNotFound do
-      delete :destroy, id: i.id
-    end
+    delete :destroy, id: i.id
 
     assert Item.find(i.id)
-    refute_equal "500", response.code
+    assert_equal "302", response.code
   end
 
   def test_must_be_signed_in_to_delete
