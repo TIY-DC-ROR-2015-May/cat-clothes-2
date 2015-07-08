@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
+  skip_authorization_check only: :index
+
   before_action :set_item, only: [:edit, :update, :destroy]
 
   def index
@@ -26,9 +28,11 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find params[:id]
+    authorize! :read, @item
   end
 
   def edit
+    authorize! :update, @item
   end
 
   def update
