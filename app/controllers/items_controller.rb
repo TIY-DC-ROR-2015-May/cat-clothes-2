@@ -6,7 +6,9 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.page(params[:page])
+    # If seller belongs_to company and company belongs_to other_table
+    # includes(seller: {company: :other_table}) for nested lookups
+    @items = Item.page(params[:page]).includes(:seller)
   end
 
   def new
