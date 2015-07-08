@@ -30,9 +30,12 @@ html lang="en"
           a.navbar-brand href="#"CatClothes2
           .navbar-collapse.collapse.navbar-responsive-collapse
             ul.nav.navbar-nav
-              li= link_to "Link 1", "/path1"
-              li= link_to "Link 2", "/path2"
-              li= link_to "Link 3", "/path3"
+            ul.nav.navbar-nav.pull-right
+              - if current_user
+                li= link_to current_user.email, ""
+                li= link_to "Sign Out", destroy_user_session_path, method: :delete
+              - else
+                li= link_to "Sign In", new_user_session_path
 
     .container
       .row

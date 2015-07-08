@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = current_user.sold_items.new(item_params)
+    authorize! :create, @item
     if @item.save
       # redirect_to item_path(item)
       redirect_to @item, notice: "Item created"

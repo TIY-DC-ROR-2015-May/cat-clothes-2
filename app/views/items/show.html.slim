@@ -1,5 +1,8 @@
-- if can? :update, @item
-  = link_to "Edit item", edit_item_path, class: "btn btn-default"
+.btn-group
+  - if can? :update, @item
+    = link_to "Edit item", edit_item_path, class: "btn btn-default"
+  - if can? :destroy, @item
+    = link_to "Delete item", item_path(@item), class: "btn btn-default", method: :delete
 
 h1
   = @item.name
