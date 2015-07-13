@@ -1,12 +1,6 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  def create_user! overrides={}
-    User.create!(
-      email:    overrides[:email]    || "user@example.com",
-      password: overrides[:password] || "password"
-    )
-  end
 
   def test_user_knows_sold_items
     u = create_user!

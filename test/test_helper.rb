@@ -8,6 +8,13 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def create_user! overrides={}
+    User.create!(
+      email:      overrides[:email]    || "user@example.com",
+      password:   overrides[:password] || "password",
+      created_at: overrides[:created_at]
+    )
+  end
 end
 
 class ActionController::TestCase
