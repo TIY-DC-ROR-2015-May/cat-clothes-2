@@ -7,7 +7,7 @@ class Cart
     @contents.push item
   end
 
-  def item_count
+  def count
     @contents.count
   end
 end

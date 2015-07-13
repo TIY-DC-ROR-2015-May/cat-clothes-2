@@ -35,6 +35,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'did_you_mean'
   gem 'faker'
+  gem 'letter_opener'
   gem 'sqlite3'
 end
 

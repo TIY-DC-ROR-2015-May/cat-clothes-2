@@ -43,4 +43,6 @@ Rails.application.configure do
     Bullet.enable = true
     Bullet.add_footer = true
   end
+
+  config.action_mailer.delivery_method = :letter_opener
 end

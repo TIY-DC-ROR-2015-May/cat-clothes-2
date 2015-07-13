@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-  skip_authorization_check only: :index
+  skip_authorization_check only: [:index, :buy]
 
   before_action :set_item, only: [:edit, :update, :destroy]
 
@@ -51,6 +51,12 @@ class ItemsController < ApplicationController
     authorize! :destroy, @item
     @item.destroy
     redirect_to items_path, notice: "Item deleted"
+  end
+
+  def buy
+    bought_item = Item.find params[:id]
+    ItemMailer.purchased(bought_item, current_user).deliver_now
+    redirect_to :back, notice: "Email sent"
   end
 
 private
