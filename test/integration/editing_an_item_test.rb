@@ -8,7 +8,7 @@ class EditingAnItemTest < ActionDispatch::IntegrationTest
     #   password: "password",
     #   created_at: 2.days.ago
     # )
-    @u = create_user!(
+    @u = FactoryGirl.create(:user,
       password:   "password",
       created_at: 2.days.ago
     )

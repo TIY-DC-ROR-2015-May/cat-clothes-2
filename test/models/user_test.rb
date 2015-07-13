@@ -3,7 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   def test_user_knows_sold_items
-    u = create_user!
+    u = create :user
     assert_equal 0, u.sold_items.count
 
     u.sold_items << Item.first
@@ -11,7 +11,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def test_can_reverse_email
-    u = create_user! email: "james@theironyard.com"
+    u = create :user, email: "james@theironyard.com"
     assert_equal u.name, "James"
   end
 end

@@ -14,6 +14,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   gem 'bullet'
+  gem 'factory_girl_rails'
   gem 'spring'
 end
 
