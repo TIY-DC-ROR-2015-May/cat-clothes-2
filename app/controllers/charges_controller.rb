@@ -22,6 +22,7 @@ class ChargesController < ApplicationController
     rescue Stripe::CardError => e
       flash[:error] = e.message
     end
+    flash[:notice] = "Thanks for paying!"
     redirect_to invoice_path(@invoice)
   end
 

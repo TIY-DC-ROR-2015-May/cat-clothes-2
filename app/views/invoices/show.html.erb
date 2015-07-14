@@ -4,4 +4,6 @@
 
   <% end %>
 
-  <%= "Click here to checkout" %>
+  <% unless @invoice.paid_at %>
+    <%= "Click here to checkout" %>
+  <% end %>
