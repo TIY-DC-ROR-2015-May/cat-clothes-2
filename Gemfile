@@ -55,3 +55,5 @@ gem 'omniauth'
 gem 'omniauth-github'
 
 gem 'cancancan'
+
+gem 'carrierwave'

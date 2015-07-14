@@ -4,5 +4,7 @@ class Item < ActiveRecord::Base
 
   validates_presence_of :name, :price, :seller
 
+  mount_uploader :display_image, PicturesUploader
+
   paginates_per 20
 end
