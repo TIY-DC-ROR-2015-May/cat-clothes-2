@@ -1,0 +1,12 @@
+<%= form_tag invoice_charges_path do %>
+  <article>
+    <label class="amount">
+      <span>Amount: <%= "#{@invoice.total_cost}" %></span>
+    </label>
+  </article>
+
+   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="<%= "Order # #{@invoice.id}"%>"
+          data-amount="<%= @amount %>"></script>
+<% end %>
