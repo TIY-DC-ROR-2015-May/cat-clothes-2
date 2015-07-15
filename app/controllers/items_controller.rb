@@ -58,8 +58,8 @@ class ItemsController < ApplicationController
 
   def buy
     bought_item = Item.find params[:id]
-    # ItemMailer.purchased(bought_item, current_user).deliver_now
-    EmailWorker.perform_later bought_item, current_user
+    ItemMailer.purchased(bought_item, current_user).deliver_later
+    # EmailWorker.perform_later bought_item, current_user
     redirect_to :back, notice: "Email sent"
   end
 
