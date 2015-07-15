@@ -1,11 +1,8 @@
-class EmailWorker
-  include Sidekiq::Worker
+class EmailWorker < ActiveJob::Base
+  queue_as :default
 
-  def perform item_id, user_id
-    item = Item.find_by_id item_id
-    user = User.find_by_id user_id
-    return unless item && user
-
+  def perform item, user
+    sleep 5
     ItemMailer.purchased(item, user).deliver_now
   end
 end
