@@ -11,6 +11,7 @@ class ChargesController < ApplicationController
   def create
     @invoice = Invoice.find(params[:invoice_id])
     @amount = @invoice.amount_in_cents
+    # TakePaymentJob.perform_later @invoice, params[:stripeToken]
     begin
       charge = Stripe::Charge.create(
         amount: @amount,
