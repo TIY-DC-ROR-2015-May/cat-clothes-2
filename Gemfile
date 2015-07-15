@@ -12,6 +12,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'stripe'
 
+gem 'sidekiq'
+
 
 group :development, :test do
   gem 'bullet'

@@ -6,6 +6,9 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update, :destroy]
 
   def index
+    # PrintWorker.perform_async "Someone asked for the index page"
+    # SayWorker.perform_async "You have a visitor"
+    
     # If seller belongs_to company and company belongs_to other_table
     # includes(seller: {company: :other_table}) for nested lookups
     @items = Item.page(params[:page]).includes(:seller)
