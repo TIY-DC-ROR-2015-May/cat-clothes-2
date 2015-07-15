@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: :omniauth_callbacks }
 
@@ -10,6 +12,11 @@ Rails.application.routes.draw do
   resource :cart, only: [:update]
   resources :invoices, only: [:show] do 
     resources :charges, only: [:new, :create]
+  end
+
+  # authenticate :user, lambda { |u| u.admin? } do
+  authenticate :user do
+    mount Sidekiq::Web => '/sidekiq'
   end
 
   root to: 'items#index'

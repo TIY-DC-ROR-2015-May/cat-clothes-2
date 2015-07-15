@@ -13,7 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'stripe'
 
 gem 'sidekiq'
-
+gem 'sinatra', require: nil
 
 group :development, :test do
   gem 'bullet'
