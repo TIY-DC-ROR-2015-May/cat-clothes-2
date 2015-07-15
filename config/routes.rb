@@ -9,7 +9,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :cart, only: [:update]
+  resource :cart, only: [:update] do
+    member do
+      post :checkout
+    end
+  end
+
   resources :invoices, only: [:show] do 
     resources :charges, only: [:new, :create]
   end

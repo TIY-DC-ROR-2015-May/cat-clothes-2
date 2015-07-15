@@ -5,5 +5,5 @@
   <% end %>
 
   <% unless @invoice.paid_at %>
-    <%= "Click here to checkout" %>
+    <%= link_to "Checkout Now", new_invoice_charge_path(@invoice) %>
   <% end %>
