@@ -58,7 +58,8 @@ class ItemsController < ApplicationController
 
   def buy
     bought_item = Item.find params[:id]
-    ItemMailer.purchased(bought_item, current_user).deliver_now
+    # ItemMailer.purchased(bought_item, current_user).deliver_now
+    EmailWorker.perform_async bought_item.id, current_user.id
     redirect_to :back, notice: "Email sent"
   end
 
