@@ -14,6 +14,7 @@ gem 'stripe'
 
 gem 'sidekiq'
 gem 'sinatra', require: nil
+gem 'sidetiq'
 
 group :development, :test do
   gem 'bullet'
