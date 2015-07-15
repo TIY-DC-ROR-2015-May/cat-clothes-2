@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  skip_authorization_check only: :update
+  skip_authorization_check
 
   def update
     # my_cart = Cart.new
@@ -23,4 +23,17 @@ class CartsController < ApplicationController
     # my_cart.add_item item
     redirect_to :back, notice: "#{item.name} has been added to your cart"
   end
+
+  def checkout
+    # TODO This is where checkout is having problems.
+    # So, if you have just logged in, you don't yet have a session cart. 
+
+    if session[:cart]
+      @invoice = Cart.create_invoice(session[:cart])
+      redirect_to invoice_path(@invoice)
+    else
+      redirect_to :back, notice: "You don't have anything in your cart."
+    end
+  end
+
 end
